@@ -1,0 +1,2 @@
+module App::ViewsHelper
+end
