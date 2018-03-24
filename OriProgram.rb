@@ -1,0 +1,115 @@
+setofcontractions = { #this creates an object, it holds values for a bunch of contractions and its expanded versions
+      "i'm"               => "I am",
+      "i'll"              => "I will",
+      "i'd"               => "I would",
+      "i've"              => "I have",
+      "you're"            => "you are",
+      "you'll"            => "you will",
+      "you'd"             => "you would",
+      "you've"            => "you have",
+      "he's"              => "he is",
+      "he'll"             => "he will",
+      "he'd"              => "he would",
+      "she's"             => "she is",
+      "she'll"            => "she will",
+      "she'd"             => "she would",
+      "it's"              => "it is",
+      "'tis"              => "it is",
+      "it'll"             => "it will",
+      "it'd"              => "it would",
+      "we're"             => "we are",
+      "we'll"             => "we will",
+      "we'd"              => "we would",
+      "we've"             => "we have",
+      "they're"           => "they are",
+      "they'll"           => "they will",
+      "they'd"            => "they would",
+      "they've"           => "they have",
+      "that's"            => "that is",
+      "that'll"           => "that will",
+      "that'd"            => "that would",
+      "who's"             => "who is",
+      "who'll"            => "who will",
+      "who'd"             => "who would",
+      "what's"            => "what is",
+      "what're"           => "what are",
+      "what'll"           => "what will",
+      "what'd"            => "what would",
+      "where's"           => "where is",
+      "where'll"          => "where will",
+      "where'd"           => "where would",
+      "when's"            => "when is",
+      "when'll"           => "when will",
+      "when'd"            => "when would",
+      "why's"             => "why is",
+      "why'll"            => "why will",
+      "why'd"             => "why would",
+      "how's"             => "how is",
+      "how'll"            => "how will",
+      "how'd"             => "how would",
+      "she'd've"          => "she would have",
+      "'tisn't"           => "it is not",
+      "isn't"             => "is not",
+      "aren't"            => "are not",
+      "wasn't"            => "was not",
+      "weren't"           => "were not",
+      "haven't"           => "have not",
+      "hasn't"            => "has not",
+      "hadn't"            => "had not",
+      "won't"             => "will not",
+      "wouldn't"          => "would not",
+      "don't"             => "do not",
+      "doesn't"           => "does not",
+      "didn't"            => "did not",
+      "can't"             => "cannot",
+      "couldn't"          => "could not",
+      "shouldn't"         => "should not",
+      "mightn't"          => "might not",
+      "mustn't"           => "must not",
+      "would've"          => "would have",
+      "should've"         => "should have",
+      "could've"          => "could have",
+      "might've"          => "might have",
+      "must've"           => "must have",
+      "o'"                => "of",
+      "o'clock"           => "of the clock",
+      "ma'am"             => "madam",
+      "ne'er-do-well"     => "never-do-well",
+      "cat-o'-nine-tails" => "cat-of-nine-tails",
+      "jack-o'-lantern"   => "jack-of-the-lantern",
+      "will-o'-the-wisp"  => "will-of-the-wisp",
+      "'twas"             => "it was"
+    }
+
+puts "What would you like to do?"#these 3 lines print, asking the user for an input
+puts "*-* Type 'wordcount' to view word count, character count, etc."
+puts "*-* Type 'contractions' to find the expanded version of a contraction."
+
+choice = gets.chomp //grabs the user's input
+if choice == 'wordcount'#if the user types 'wordcount'
+	puts "Enter a phrase you'd like to analyze: "
+	text = gets.chomp       #grabs the user's input
+
+	wlength = text.strip.split().length   # '.strip' looks at whitespaces, it removes all extra, and is able to put each word into an array.  then '.length' looks at the number of items in that array
+	puts "Word Count : #{wlength}"        # the second lines of all of these print the variable and it's value                    
+
+	sentences = text.strip.split(/\w[?!.]/).length # for number of sentences  #the [?!.] part is able to split every time one of those shows up, since they only show up at the ends of sentences it splits there, length counts
+  puts "Sentences : #{sentences}"
+
+	characters = text.length # number of characters (with spaces) # simple '.length' command, is able to see how long the string is
+	puts "characters (with spaces) : #{characters}"
+
+	total_characters_nonspaes = text.gsub(/\s+/,'').length #.gsub substitutes a letter with another letter, \s+ finds all white spaces and subs it with'', which is blank
+	puts "Characters (no spaces): #{total_characters_nonspaes}" 
+
+	paragraph = text.split(/\n\n/).length #looks for line splits, and splits there, creating number of paragraphs
+	puts "paragraphs : #{paragraph}"
+  
+elsif choice == 'contractions'
+	puts "Type in a contraction or words to contract."
+    text = gets.chomp #grabs the user's input
+    word = text.downcase        #makes all letters lowercase to fit form of object
+    puts setofcontractions["#{word}"] #prints corresponding value
+else
+		puts "Sorry, this action is not valid." # if the input is neither of the inputs, print this
+end
